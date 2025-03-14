@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'PangMen';
+  src: url('./庞门正道标题体3.0.ttf') format('truetype');
+}
+
+
+/* assets/styles.scss */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 33, 42, 1);
+  color: white;
+  font-family: TRENDS, TRENDS;
+}
+
+/* 大屏面板样式 */
+.panel {
+  background: rgba(10, 34, 43, 0.7);
+  color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 标题样式 */
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.panel h3:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px 2px 2px 2px;
+  border: 1px solid #FFFFFF;
+  z-index: 2;
+}
+
+.panel h3:after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px 2px 2px 2px;
+  border: 1px solid #48D5CD;
+  background-color: #48D5CD;
+  z-index: 1;
+}
+
+/* 主要内容区域 */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Flex布局 */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
