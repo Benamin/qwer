@@ -13,7 +13,7 @@
     </h3>
     <div class="rank-container">
       <p>邻里汇top3</p>
-      <div v-for="(item, index) in llh" :key="index" class="ranking-item">
+      <div v-for="(item, index) in llh" :key="index+'1'" class="ranking-item">
         <div class="ranking-header">
           <span :class="['rank', getRankColor(index)]">TOP{{ index + 1 }}</span>
           <span class="name">{{ item.siteName }}</span>
@@ -30,7 +30,7 @@
         </div>
       </div>
       <p>助餐服务top3</p>
-      <div v-for="(item, index) in zcfw" :key="index" class="ranking-item">
+      <div v-for="(item, index) in zcfw" :key="index+'2'" class="ranking-item">
         <div class="ranking-header">
           <span :class="['rank', getRankColor(index)]">TOP{{ index + 1 }}</span>
           <span class="name">{{ item.siteName }}</span>
@@ -47,7 +47,7 @@
         </div>
       </div>
       <p>卫生服务top3</p>
-      <div v-for="(item, index) in wsfw" :key="index" class="ranking-item">
+      <div v-for="(item, index) in wsfw" :key="index+'3'" class="ranking-item">
         <div class="ranking-header">
           <span :class="['rank', getRankColor(index)]">TOP{{ index + 1 }}</span>
           <span class="name">{{ item.siteName }}</span>
@@ -75,7 +75,7 @@ export default {
   props: ["title"],
   data() {
     return {
-      tabs: [ "上个月", "本年度"],
+      tabs: ["上个月", "本年度"],
       activeTab: 0, // 默认选中第一个
       llh: {},
       zcfw: {},
@@ -121,10 +121,10 @@ export default {
       let startTime, endTime;
       console.log(this.activeTab);
       switch (this.activeTab) {
-        // case 0:
-        //   startTime = moment().subtract(1, "week").startOf("week").format("YYYY-MM-DD");
-        //   endTime = moment().subtract(1, "week").endOf("week").format("YYYY-MM-DD");
-        //   break;
+          // case 0:
+          //   startTime = moment().subtract(1, "week").startOf("week").format("YYYY-MM-DD");
+          //   endTime = moment().subtract(1, "week").endOf("week").format("YYYY-MM-DD");
+          //   break;
         case 0:
           startTime = moment().subtract(1, "month").startOf("month").format("YYYY-MM-DD");
           endTime = moment().subtract(1, "month").endOf("month").format("YYYY-MM-DD");
@@ -173,6 +173,7 @@ export default {
   border-bottom: 2px solid #2c3e50;
   padding-bottom: 5px;
   margin-bottom: 10px;
+  margin-top: 0;
   position: relative;
 }
 
@@ -276,5 +277,12 @@ export default {
 
 .tab-button:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+.rank-container {
+  > p {
+    font-size: 16px;
+    margin-top: 3vh;
+  }
 }
 </style>

@@ -50,6 +50,7 @@ export default {
   border-bottom: 2px solid #2c3e50;
   padding-bottom: 5px;
   margin-bottom: 10px;
+  margin-top: 0;
 }
 
 </style>

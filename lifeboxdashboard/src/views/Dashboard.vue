@@ -97,8 +97,8 @@ export default {
 .dashboard {
   display: flex;
   flex-direction: row;
-  height: 100%;
-  padding: 7vh 20px 20px 20px;
+  height: 90vh;
+  padding: 6vh 20px 20px 20px;
 
   position: relative;
 }
@@ -123,7 +123,7 @@ export default {
 .dashboard-title {
   position: absolute;
   height: 5vh;
-  top: 20px;
+  top: 0px;
   left: 0px;
   z-index: 999;
   width: 100%;
@@ -149,7 +149,8 @@ export default {
   }
 
   div:last-child {
-    background: linear-gradient(90deg, rgba(12, 48, 58, 0.8) 0%, rgba(12, 48, 58, 0.73) 29%, rgba(12, 48, 58, 0.51) 59%, rgba(12, 48, 58, 0.16) 89%, rgba(12, 48, 58, 0) 100%);
+    //background: linear-gradient(90deg, rgba(12, 48, 58, 0.8) 0%, rgba(12, 48, 58, 0.73) 29%, rgba(12, 48, 58, 0.51) 59%, rgba(12, 48, 58, 0.16) 89%, rgba(12, 48, 58, 0) 100%);
+    background: linear-gradient(90deg, rgba(12, 48, 58, 0) 0%, rgba(12, 48, 58, 0.16) 29%, rgba(12, 48, 58, 0.51) 59%, rgba(12, 48, 58, 0.73) 89%, rgba(12, 48, 58, 0.8) 100%);
     border-radius: 0px 0px 0px 0px;
     opacity: 0.85;
   }
