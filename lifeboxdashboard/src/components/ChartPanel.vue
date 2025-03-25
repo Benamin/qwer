@@ -7,6 +7,8 @@
 
 <script>
 import * as echarts from "echarts";
+import {Api} from "../constants.js";
+import moment from "moment";
 
 export default {
   props: ["title"],
@@ -14,14 +16,56 @@ export default {
     this.initChart();
   },
   methods: {
-    initChart() {
+    async initChart() {
+      const startTime = moment().subtract(1, "week").startOf("week").format("YYYY-MM-DD");
+      const endTime = moment().subtract(1, "week").endOf("week").format("YYYY-MM-DD");
+      const req = {
+        "endTime": endTime,
+        "rankType": "desc",
+        "regionId": "4557",
+        "regionType": "COUNTRY",
+        "serviceId": "1667159201",
+        "startTime": startTime
+      };
+      const resp = await this.$axios.post(`${Api}/rest_s/v1/partingbuing/mobile/life/box/getAgeAndSexInfoWeek`, req);
+      console.log(resp);
+      let data = [];
+      resp.msg.forEach(e => {
+        let total = ~~e.child + ~~e.middle + ~~e.senility + ~~e.teenager;
+        data.push(total);
+      });
+      this.regionInfo = resp.msg;
       let chart = echarts.init(this.$refs.chart);
       chart.setOption({
-        title: { text: this.title, left: "center", textStyle: { color: "#fff" } },
         tooltip: {},
-        xAxis: { type: "category", data: ["3月11", "3月12", "3月13", "3月14", "3月15", "3月16", "3月17"] },
-        yAxis: { type: "value" },
-        series: [{ type: "bar", data: [120, 200, 150, 80, 70, 220, 180] }]
+        grid: {
+          left: "3%",
+          right: "6%",
+          top: "8%",
+          bottom: "1%",
+          containLabel: true
+        },
+        xAxis: {
+          type: "category", axisLine: {
+            show: false,
+            lineStyle: {
+              color: "#7FCEFF"
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+        },
+        yAxis: {
+          type: "value",
+
+        },
+        series: [{ type: "bar",
+          itemStyle: {
+            color: "#00D6F9"
+          },
+          data: data }]
       });
     }
   }
